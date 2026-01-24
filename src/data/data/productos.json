@@ -1,0 +1,6 @@
+[
+  {"id": 1, "nombre": "Laptop Gamer", "precio": 1200, "categoria": "Computación"},
+  {"id": 2, "nombre": "Mouse Óptico", "precio": 25, "categoria": "Accesorios"},
+  {"id": 3, "nombre": "Monitor 4K", "precio": 400, "categoria": "Computación"},
+  {"id": 4, "nombre": "Teclado Mecánico", "precio": 80, "categoria": "Accesorios"}
+]
