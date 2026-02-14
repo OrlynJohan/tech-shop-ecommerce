@@ -94,3 +94,86 @@ miCarrito.agregarProducto(mouse);
 miCarrito.agregarProducto({ nombre: "Falso", precio: 0 }); 
 
 miCarrito.mostrarRecibo();
+/**
+ * UNIDAD 3: DEFINICIÓN DE INTERFACES Y ENCAPSULACIÓN
+ * Definimos una interfaz conceptual para asegurar que todo producto tenga 
+ * las propiedades básicas antes de ser procesado.
+ */
+
+class Producto {
+    // ENCAPSULACIÓN: El uso de '#' define atributos privados.
+    // Esto impide que el precio sea modificado externamente sin validación.
+    #precio; 
+
+    constructor(id, nombre, precio, categoria) {
+        this.id = id;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.#precio = precio;
+    }
+
+    // Getter: Interfaz de acceso al atributo privado
+    get precio() {
+        return this.#precio;
+    }
+}
+
+/**
+ * UNIDAD 2: ESTRUCTURAS DE DATOS Y LÓGICA DE GESTIÓN
+ */
+class Carrito {
+    constructor() {
+        // Estructura de datos interna: Array de objetos
+        this.productos = []; 
+    }
+
+    /**
+     * MANEJO DE ERRORES (Unidad 3): Uso de Try-Catch para robustez.
+     * Validamos que solo objetos de la clase Producto entren al sistema.
+     */
+    agregarProducto(producto) {
+        try {
+            if (!(producto instanceof Producto)) {
+                throw new Error(`El elemento "${producto.nombre || 'desconocido'}" no es una instancia de Producto.`);
+            }
+            if (producto.precio <= 0) {
+                throw new Error("El precio debe ser mayor a cero.");
+            }
+            
+            // PROGRAMACIÓN FUNCIONAL (Unidad 1): Inmutabilidad
+            // Usamos el operador spread para generar un nuevo estado de la lista.
+            this.productos = [...this.productos, producto];
+            console.log(`✅ Éxito: ${producto.nombre} agregado al carrito.`);
+            
+        } catch (error) {
+            console.error(`❌ ERROR CRÍTICO: ${error.message}`);
+        }
+    }
+
+    /**
+     * UNIDAD 1: PROGRAMACIÓN FUNCIONAL (Funciones de Orden Superior)
+     * Implementación de 'reduce' para el cálculo de totales.
+     */
+    calcularTotal() {
+        const subtotal = this.productos.reduce((acumulador, p) => acumulador + p.precio, 0);
+        const IVA = 0.15;
+        return subtotal * (1 + IVA);
+    }
+
+    mostrarResumen() {
+        console.table(this.productos); // Demuestra visualmente la estructura de datos
+        console.log(`Total Final con Impuestos: $${this.calcularTotal().toFixed(2)}`);
+    }
+}
+
+// --- DEMOSTRACIÓN DE FUNCIONAMIENTO ---
+const tienda = new Carrito();
+
+// 1. Casos de éxito
+tienda.agregarProducto(new Producto(101, "Laptop", 1200, "Hardware"));
+tienda.agregarProducto(new Producto(102, "Mouse", 25, "Accesorios"));
+
+// 2. CASO DE ERROR (Para el video): Intentar agregar un objeto plano que no es clase Producto
+tienda.agregarProducto({ nombre: "Infiltrado", precio: 10 }); 
+
+tienda.mostrarResumen();
