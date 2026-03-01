@@ -1,18 +1,17 @@
-# tech-shop-ecommerce
-Sistema de gestión de e-commerce desarrollado bajo el paradigma de programación funcional
-# 🛒 Tech-Shop: E-commerce Funcional
+# Tech-Shop: Sistema de Gestión E-commerce (Proyecto Final)
 
-## 📝 Descripción
-Proyecto universitario enfocado en la gestión de una tienda tecnológica utilizando **Programación Funcional**. El objetivo es procesar transacciones sin efectos secundarios y con inmutabilidad.
+## Datos del Proyecto
+* **Materia:** Programación Orientada a Objetos
+* **Fecha:** marzo 2026
+* **Objetivo:** Integrar lógica funcional y POO en un sistema de servicios web.
 
-## 🚀 Módulos Principales
-1. **Catálogo Inmutable**: Filtrado y búsqueda de productos.
-2. **Checkout Funcional**: Cálculo de IVA y descuentos mediante composición de funciones.
+## Funcionalidades Principales
+1. **Gestión de Inventario:** Uso de clases y herencia para productos físicos.
+2. **Encapsulamiento:** Protección de datos sensibles (precios) mediante propiedades privadas (#).
+3. **Cálculos Automatizados:** Uso de funciones de orden superior (`reduce`) para el cálculo de IVA y totales.
+4. **API REST:** 8 servicios web funcionales que entregan datos en formato JSON.
 
-## 🛠️ Tecnologías
-- **Lenguaje:** JavaScript (ES6+)
-- **Paradigma:** Funcional (PF)
-- **Librerías planeadas:** Ramda.js, Zod.
-
-## 📁 Documentación
-El diseño detallado y el alcance se encuentran en la carpeta `/docs`.
+## Tecnologías Utilizadas
+* Node.js y Express.js
+* Programación Orientada a Objetos (Clases, Herencia, Encapsulamiento)
+* Serialización JSON
