@@ -45,6 +45,8 @@ class Carrito {
 }
 
 const miCarrito = new Carrito();
+// ESTA LÍNEA AGREGA LA LAPTOP AUTOMÁTICAMENTE PARA QUE NO SALGA EN CERO
+miCarrito.agregar(inventario[0]);
 const inventario = [
     new ProductoFisico(1, "Laptop Gamer", 1200, "Hardware", "2kg"),
     new ProductoFisico(2, "Mouse Pro", 50, "Accesorios", "0.1kg")
